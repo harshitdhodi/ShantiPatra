@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6ba87e22.css",
+    "main.js": "/static/js/main.a791d64b.js",
+    "static/js/453.30dc75cc.chunk.js": "/static/js/453.30dc75cc.chunk.js",
+    "static/media/formimg.jpg": "/static/media/formimg.392677b98a57787efceb.jpg",
+    "static/media/circle.svg": "/static/media/circle.f33d7788062f03532c39631aa99c9a2a.svg",
+    "static/media/plantimg.png": "/static/media/plantimg.dea4e0ba59024b0dda74.png",
+    "static/media/leafform.png": "/static/media/leafform.1cd1461364e8587d1ba2.png",
+    "static/media/strategic-vision.png": "/static/media/strategic-vision.1ae433006acabedb2b2d.png",
+    "static/media/light-bulb.png": "/static/media/light-bulb.381e9857f47eb799882a.png",
+    "static/media/adminimg.png": "/static/media/adminimg.6cba3e0e2ad05cd75230.png",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.6ba87e22.css.map": "/static/css/main.6ba87e22.css.map",
+    "main.a791d64b.js.map": "/static/js/main.a791d64b.js.map",
+    "453.30dc75cc.chunk.js.map": "/static/js/453.30dc75cc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ba87e22.css",
+    "static/js/main.a791d64b.js"
+  ]
+}
