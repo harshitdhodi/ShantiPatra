@@ -1,0 +1,43 @@
+/* quill.css */
+.quill {
+    font-family: inherit;
+  }
+
+.quill {
+  @apply p-0
+  }
+  
+  .quill h1 {
+    @apply text-3xl font-bold;
+  }
+  
+  .quill h2 {
+    @apply text-2xl font-semibold;
+  }
+  
+  .quill h3 {
+    @apply text-xl font-medium;
+  }
+  
+  .quill p {
+    @apply text-base;
+  }
+  .quill ul {
+  padding-left: 0px;
+}
+  /* styles.css */
+.custom-bullets li {
+  list-style-type: disc; /* Ensure bullet points are visible */
+  color: rgb(54, 53, 53); /* Hide the default bullet color */
+}
+
+.custom-bullets li::marker {
+  color: #0769fd; /* Replace with your desired bullet color (e.g., Tomato) */
+}
+
+.custom-bullets ul li::marker {
+  color: #fab700; /* Replace this with your custom color */
+}
+  
+  
+  

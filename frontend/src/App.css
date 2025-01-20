@@ -1,0 +1,25 @@
+/* slickCarouselStyles.css */
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+
+
+.btn-2 {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-2::after {
+    content: "";
+    background: rgb(3, 3, 52);
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: transform 0.5s;
+}
+
+.btn-2:hover::after {
+    transform: skewX(45deg) scale(1, 1);
+}
