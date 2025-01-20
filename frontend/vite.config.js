@@ -12,13 +12,13 @@ export default defineConfig({
   },
   // Proxy configuration
   server: {
-    proxy: {
-      "/api": {
-        target: "http://localhost:3006", // Backend server URL
-        changeOrigin: true, // Change the origin of the host header to the target URL
-        secure: false, // Set to false if you're not using HTTPS
-         },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "http://localhost:3006", // Backend server URL
+    //     changeOrigin: true, // Change the origin of the host header to the target URL
+    //     secure: false, // Set to false if you're not using HTTPS
+    //      },
+    // },
   },
 });
  
