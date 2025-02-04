@@ -157,7 +157,7 @@ const AdminDashboard = () => {
         },
     };
     return (
-        <div className="flex flex-col flex-1 overflow-x-auto">
+        <div className="flex flex-col flex-1 w-full overflow-x-auto">
             <div className="p-4">
                 <p className='font-bold uppercase'>Welcome to the Admin Panel Dashboard!</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">

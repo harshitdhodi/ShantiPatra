@@ -67,7 +67,7 @@ function EditAdminProfile() {
   };
 
   return (
-    <div className="w-1/3 p-5">
+    <div className="w-full md:w-1/2 p-5">
       <ToastContainer />
       <h2 className="text-2xl font-semibold font-serif text-center mb-5">Edit Profile</h2>
       <form onSubmit={handleSubmit}>
