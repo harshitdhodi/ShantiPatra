@@ -70,7 +70,7 @@ exports.createInquiry = async (req, res) => {
 </head>
 <body>
     <div class="container">
-       <h2>MAGNUMPACK</h2>
+       
         <p class="centered-text">New Inquiry!!</p>
         <p><span class="field">Name:</span> ${newInquiry.name}</p>
         <p><span class="field">Company:</span> ${newInquiry.company || 'N/A'}</p>

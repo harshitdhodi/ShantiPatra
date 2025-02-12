@@ -74,6 +74,24 @@ const downloadLogo = (req, res) => {
   });
 };
 
+const viewLogo = (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, '../logos', filename);
+
+  // Check if file exists
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ message: 'File not found' });
+  }
+
+  // Set content type dynamically based on file extension
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Error displaying image' });
+    }
+  });
+};
+
 const getHeaderColorLogos = async (req, res) => {
   try {
     const headerColorLogos = await Logo.findOne({ type: 'headerColor' });
@@ -108,6 +126,7 @@ module.exports = {
   downloadLogo,
   getHeaderColorLogos,
   getFooterWhiteLogos,
-  getHeaderWhiteLogos
+  getHeaderWhiteLogos,
+  viewLogo
 
 };

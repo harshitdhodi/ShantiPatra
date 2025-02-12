@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import Sidebar from './AdminComponents/Sidebar';
+import Sidebar from './AdminComponents/Sidebar'; 
 import News from "./AdminComponents/Pages/News";
 import CreateNews from "./AdminComponents/Pages/CreateNews";
 import EditNews from './AdminComponents/Pages/EditNews';

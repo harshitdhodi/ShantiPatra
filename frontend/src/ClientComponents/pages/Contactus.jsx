@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import WhatsAppButton from '../Whatsapp';
 import SplashScreen from './Splashscreen';
-
+import { ImSpinner2 } from "react-icons/im"; // Import spinner icon
 // Set the app element for the modal (optional)
 Modal.setAppElement('#root');
 
@@ -94,7 +94,13 @@ function Contactus() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         setIsSubmitting(true);
+    // Simulate API call
+    setTimeout(() => {
+        setLoading(false);
+        // alert("Form submitted successfully!");
+      }, 2000);
 
         try {
             await axios.post('/api/inquiries/createInquiry', {
@@ -205,11 +211,21 @@ function Contactus() {
                             </div>
                             <div className="flex justify-start">
                                 <button
-                                    className="bg-[#384b98] hover:bg-[#3b53b3] w-full flex text-center justify-center gap-2 items-center text-white hover:text-black font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    className="bg-[#384b98] hover:bg-[#3b53b3] w-full flex text-center justify-center gap-2 items-center text-white hover:text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
                                     type="submit"
+                                    disabled={loading} // Disable button while loading
                                 >
-                                    <FaPaperPlane />
-                                    Get in Touch
+                                    {loading ? (
+                                        <>
+                                            <ImSpinner2 className="animate-spin" /> {/* Loading spinner */}
+                                            Processing...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <FaPaperPlane />
+                                            Get in Touch
+                                        </>
+                                    )}
                                 </button>
                             </div>
                         </form>
@@ -236,7 +252,7 @@ function Contactus() {
 
 
             </div>
-            {/* <iframe src='https://widgets.sociablekit.com/instagram-hashtag-feed/iframe/25449503' frameborder='0' width='100%' height='1000'></iframe> */}
+
             <iframe src={location} height="450" className='border-0 w-full' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
             {/* Modal for successful submission */}

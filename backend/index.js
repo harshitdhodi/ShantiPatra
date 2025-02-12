@@ -28,6 +28,7 @@ const BackupRoutes = require("./routes/backup")
 const Achievements = require("./routes/achievements")
 const Counter = require("./routes/counter")
 const inquiries = require("./routes/inquiry")
+
 const mission = require("./routes/mission")
 const vision = require("./routes/vision")
 const footer = require("./routes/footer")

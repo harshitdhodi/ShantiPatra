@@ -8,7 +8,8 @@ const {
   downloadLogo,
   getHeaderColorLogos,
   getFooterWhiteLogos,
-  getHeaderWhiteLogos
+  getHeaderWhiteLogos,
+  viewLogo
 } = require('../controller/logo');
 const {uploadLogo} =  require('../middleware/logoUpload')
 
@@ -20,4 +21,5 @@ router.get('/download/:filename', downloadLogo);
 router.get('/headercolor', getHeaderColorLogos);
 router.get('/footerwhite', getFooterWhiteLogos);
 router.get('/headerwhite', getHeaderWhiteLogos);
+router.get('/view/:filename',viewLogo)
 module.exports = router;
