@@ -2,7 +2,7 @@ const Inquiry = require('../model/inquiry');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com', // Hostname for Gmail SMTP
+  host: 'orbit9.gingerservers.com', // Hostname for Gmail SMTP
   port: 465, // Secure SSL port (or use 587 for TLS)
   secure: true, // Use SSL
   auth: {
