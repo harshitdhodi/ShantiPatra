@@ -18,201 +18,171 @@ exports.createInquiry = async (req, res) => {
 
     // HTML Email Template
     const emailHTML = `
-       <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Inquiry</title>
-    <style>
-       /* Reset default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>New Inquiry</title>
+ <style>
+    /* Reset default styles */
+/* General Styling */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: #f5f5f5;
-    color: #333;
-}
 
-.email-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: gray/10;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-/* Header Styles */
-.email-header {
-    background-color: #f8f9fa;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.company-logo {
-    max-width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.company-name {
-    color: #2c3e50;
-    font-size: 24px;
-    font-weight: 600;
+ background-color: #f4f4f4;
+ color: #333;
+ margin: 0;
+ padding: 20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
 }
 
 /* Notification Banner */
 .notification-banner {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+ background-color: #ffffff;
+ border-radius: 8px;
+ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+ width: 100%;
+ max-width: 500px;
+ padding: 20px;
+ text-align: center;
 }
 
+/* Notification Header */
 .notification-text {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.timestamp {
-    font-size: 14px;
-    opacity: 0.9;
+ font-size: 18px;
+ font-weight: bold;
+ color: #007bff;
+ padding-bottom: 10px;
+ border-bottom: 2px solid #007bff;
 }
 
 /* Inquiry Details */
 .inquiry-details {
-    padding: 20px;
+ margin-top: 15px;
 }
 
 .detail-card {
-    background-color: #fff;
-    border-radius: 6px;
-    padding: 20px;
+ background-color: #f9f9f9;
+ border-radius: 6px;
+ padding: 15px;
+ box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .detail-item {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+ display: flex;
+ justify-content: space-between;
+ padding: 8px 0;
+ border-bottom: 1px solid #ddd;
+
 }
 
 .detail-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+ border-bottom: none;
 }
 
 .label {
-    display: block;
-    color: #6c757d;
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: 500;
+ font-weight: bold;
+ color: #555;
 }
 
 .value {
-    color: #2c3e50;
-    font-size: 16px;
+ color: #222;
+}
+
+/* Message Styling */
+.message {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
 }
 
 .message-text {
-    white-space: pre-line;
-    line-height: 1.5;
+ margin-top: 5px;
+ font-style: italic;
+ color: #444;
+}
+/* Header Styling */
+.image {
+ text-align: center;
+ margin-bottom: 15px;
 }
 
-/* Footer Styles */
+/* Company Logo Styling */
+.company-logo {
+ max-width: 150px; /* Adjust the size as needed */
+ height: auto;
+ border-radius: 8px; /* Soft rounded edges */
+ box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elegance */
+}
+
+/* Footer */
 .email-footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #e9ecef;
-}
-
-.disclaimer {
-    margin-bottom: 10px;
+ margin-top: 15px;
+ text-align: center;
+ font-size: 12px;
+ color: #777;
 }
 
 .automated-notice {
-    color: #6c757d;
-    font-size: 14px;
+ font-style: italic;
+ color: #888;
 }
 
 .company-info {
-    color: #6c757d;
-    font-size: 12px;
+ margin-top: 5px;
+ font-weight: bold;
+ color: #555;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-    .email-container {
-        margin: 10px;
-        border-radius: 0;
-    }
-
-    .notification-banner {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .timestamp {
-        margin-top: 5px;
-    }
-}
-    </style>
+ </style>
 </head>
 <body>
 <div class="email-container">
-        <header class="email-header">
-            <img src="https://shantipatra.com/api/logo/download/photo_1729923320922.png" class="company-logo" alt="Company Logo">
-          
-        </header>
 
-        <div class="notification-banner">
-            <div class="notification-text">New Inquiry Received</div> 
-          
 
-        <main class="inquiry-details">
-            <div class="detail-card">
-                <div class="detail-item">
-                    <span class="label">Name</span>
-                    <span class="value">${newInquiry.name}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Email</span>
-                    <span class="value">${newInquiry.email}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Phone</span>
-                    <span class="value">${newInquiry.phone}</span>
-                </div>
-                <div class="detail-item message">
-                    <span class="label">Message</span>
-                    <p class="value message-text">${newInquiry.message}</p>
-                </div>
-            </div>
-        </main>
+     <div class="notification-banner">
+         <header class="email-header">
+         <img src="https://shantipatra.com/api/logo/download/photo_1729923320922.png" class="company-logo" alt="Company Logo">
+       
+     </header>
+       
 
-        <footer class="email-footer">
-            <div class="disclaimer">
-                <i class="automated-notice">This is an automated email. Please do not reply.</i>
-            </div>
-            <div class="company-info">
-                <p>© 2025 Shanti Patra. All rights reserved.</p>
-            </div>
-        </footer>
-    </div>
+     <main class="inquiry-details">
+         <div class="detail-card">
+             <div class="detail-item">
+                 <span class="label">Name : </span>
+                 <span class="value"> ${newInquiry.name}</span>
+             </div>
+             <div class="detail-item">
+                 <span class="label">Email : </span>
+                 <span class="value"> ${newInquiry.email}</span>
+             </div>
+             <div class="detail-item">
+                 <span class="label">Phone : </span>
+                 <span class="value"> ${newInquiry.phone}</span>
+             </div>
+             <div class="detail-item message">
+                 <div class="label">Message: </div>
+                 <p class="value message-text">${newInquiry.message}</p>
+             </div>
+         </div>
+     </main>
+
+     <footer class="email-footer">
+         <div class="disclaimer">
+             <i class="automated-notice">This is an automated email. Please do not reply.</i>
+         </div>
+         <div class="company-info">
+             <p>© 2025 Shanti Patra. All rights reserved.</p>
+         </div>
+     </footer>
+ </div>
 </body>
 </html>
-        `;
+     `;
 
         const mailOptions = {
           from: `"${newInquiry.name}"`, // User's name as display, your email for actual sending
