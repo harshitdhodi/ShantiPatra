@@ -296,7 +296,7 @@ function MainNavbar() {
                             <div className='-mt-8 py-3 text-center'>
                                 <button
                                     className="w-full px-8 text-white py-2 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
-                                    onClick={() => window.open('/catalog.pdf', '_blank')}
+                                    onClick={() => window.open('/catalogue.pdf', '_blank')}
                                 >
                                     Catalogue
                                 </button>
