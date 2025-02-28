@@ -198,8 +198,10 @@ function MainNavbar() {
             </Link>
         );
     };
-        
 
+    const handleCatalogueClick = () => {
+        window.open('/catalogue.pdf', '_blank');
+    };
 
     return (
         <>
@@ -236,10 +238,10 @@ function MainNavbar() {
                                 />
                                 <IoClose size={32} style={{ color: 'black' }} onClick={toggleMenu} />
                             </div>
-                            <ul className='flex flex-col w-full z-10'>
+                            <ul className='flex flex-col  w-full z-10'>
                                 {allMenuItems.map((item, index) => (
                                     <li key={index} className='flex flex-col items-center border-b border-gray-700 w-full p-2'>
-                                        <div className='flex justify-between items-center text-black w-full uppercase' onClick={() => toggleDropdown(index)}>
+                                        <div className='flex justify-center items-center text-black w-full uppercase' onClick={() => toggleDropdown(index)}>
                                             {item.subItems ? (
                                                 <span>{item.pagename}</span>
                                             ) : (
@@ -248,7 +250,7 @@ function MainNavbar() {
                                             {item.subItems && (openDropdown === index ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                         </div>
                                         {item.subItems && openDropdown === index && (
-                                            <ul className='flex flex-col text-black items-center space-y-2 w-full'>
+                                            <ul className='flex flex-col text-black items-center  space-y-2 w-full'>
                                                 {item.subItems.map((subItem, subIndex) => (
                                                     <li key={subIndex} className='border-b border-gray-700 w-full py-2 px-5'>
                                                         <Link to={subItem.path}>{subItem.title}</Link>
@@ -258,6 +260,14 @@ function MainNavbar() {
                                         )}
                                     </li>
                                 ))}
+                                <li className='flex flex-col items-center justify-center  w-full p-2'>
+                                    <button
+                                        className="w-1/2 px-8 text-white py-2 mt-5 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+                                        onClick={handleCatalogueClick}
+                                    >
+                                        Catalogue
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     )}
