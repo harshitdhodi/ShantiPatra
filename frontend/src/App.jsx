@@ -109,6 +109,7 @@ import PrivacyPolicy from './ClientComponents/privacypolicy/PrivacyPolicy';
 import TermsAndConditions from './ClientComponents/privacypolicy/TermsAndConditions';
 import PdfViewerPage from './ClientComponents/PdfViewer';
 import PdfViewer from './ClientComponents/PdfViewer';
+import ScrollablePdfViewer from './ClientComponents/PdfViewer';
 
 function App() {
   return (
@@ -135,22 +136,25 @@ function AppContent() {
 
   return (
     <>
+    
       <DynamicMetaTags />
       <div className=''>
-        {!isLoggedIn &&  (
-          <>
-            <WhatsAppButton />
-            {/* <Chatbot /> */}
-          </>
-        )}
+      {!isLoggedIn && window.location.pathname !== "/catalogue.pdf" && (
+  <>
+    <WhatsAppButton />
+    {/* <Chatbot /> */}
+  </>
+)}
+
       </div>
       
       <Routes>
+      <Route path="/catalogue.pdf" element={<ScrollablePdfViewer />} />   
         {!isLoggedIn ? (
           <>
             <Route path="/" element={<Navbar />} >
               <Route index element={<Home />} />
-              <Route path="/catalogue.pdf" element={<PdfViewer />} />
+             
               {/* <Route path="/" element={<Home />} /> */}
               <Route path="/blogs" element={<Blogs />} />
               {/* <Route path="/blog/:slugs" element={<BlogDetail />} /> */}

@@ -131,17 +131,17 @@ app.use("/api/catalog", catalog)
 app.use(express.static(path.join(__dirname, 'dist')));
  
 // Add this route before the catch-all route
-app.get('/catalogue.pdf', (req, res) => {
-    const catalogPath = path.join(__dirname, 'uploads', 'catalogue.pdf');
+// app.get('/catalogue.pdf', (req, res) => {
+//     const catalogPath = path.join(__dirname, 'uploads', 'catalogue.pdf');
     
-    if (fs.existsSync(catalogPath)) {
-        res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', 'inline; filename=catalogue.pdf');
-        res.sendFile(catalogPath);
-    } else {
-        res.status(404).send('Catalog PDF not found. Please contact administrator.');
-    }
-});
+//     if (fs.existsSync(catalogPath)) {
+//         res.setHeader('Content-Type', 'application/pdf');
+//         res.setHeader('Content-Disposition', 'inline; filename=catalogue.pdf');
+//         res.sendFile(catalogPath);
+//     } else {
+//         res.status(404).send('Catalog PDF not found. Please contact administrator.');
+//     }
+// });
 
 // Keep the catch-all route last 
 app.get('*', (req, res) => {
