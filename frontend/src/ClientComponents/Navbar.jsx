@@ -258,12 +258,19 @@ function MainNavbar() {
                                     </li>
                                 ))}
                                 <li className='flex flex-col items-center justify-center  w-full p-2'>
-                                    <button
-                                        className="w-1/2 px-8 text-white py-2 mt-5 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
-                                        onClick={handleCatalogueClick}
-                                    >
-                                        Catalogue
-                                    </button>
+                                <button
+                                    className="w-full px-8 text-white py-2 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+                                    onClick={() => {
+                                        const newWindow = window.open();
+                                        if (newWindow) {
+                                            newWindow.document.write(`
+        <iframe src="/catalogue.pdf" width="100%" height="100%" style="border: none;"></iframe>
+      `);
+                                        }
+                                    }}
+                                >
+                                    View Catalogue
+                                </button>
                                 </li>
                             </ul>
                         </div>
