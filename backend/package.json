@@ -26,6 +26,7 @@
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.13",
     "npkill": "^0.12.2",
+    "pdf-lib": "^1.17.1",
     "react-slick": "^0.30.2",
     "serve-static": "^1.15.0",
     "slick-carousel": "^1.8.1",
