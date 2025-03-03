@@ -7,7 +7,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import axios from 'axios';
 import Footer from "./Footer";
 
-function MainNavbar() {
+function MainNavbar() {  
     const [menuListings, setMenuListings] = useState([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -18,7 +18,7 @@ function MainNavbar() {
     const [whitelogo, setWhiteLogo] = useState([]);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         const fetchHeaderColorLogo = async () => {
             try {
@@ -94,13 +94,13 @@ function MainNavbar() {
 
     const handleCalculatorClick = (e) => {
         e.preventDefault();
-
-
+      
+    
         // Check if already on the "/" page
         if (location.pathname !== '/') {
             // Redirect to the "/" page
             navigate('/');
-
+            
             // Scroll to the calculator after navigation completes
             setTimeout(() => {
                 const calculatorSection = document.getElementById('calculator');
@@ -128,7 +128,7 @@ function MainNavbar() {
         .map(item => {
             // Convert pagename to path format: lowercase and replace spaces with hyphens
             const path = item.pagename.toLowerCase().replace(/\s+/g, '-');
-
+            
             // Special case for home page
             const finalPath = path === 'home' ? '/' : `/${path}`;
 
@@ -162,8 +162,9 @@ function MainNavbar() {
                         e.preventDefault();
                         navigate('/products');
                     }}
-                    className={`xl:text-[16px] text-[14px] font-bold ${location.pathname === '/products' ? 'text-yellow-500' : 'text-black'
-                        } hover:text-[#df950d] transition-all`}
+                    className={`xl:text-[16px] text-[14px] font-bold ${
+                        location.pathname === '/products' ? 'text-yellow-500' : 'text-black'
+                    } hover:text-[#df950d] transition-all`}
                 >
                     {item.pagename}
                 </a>
@@ -176,8 +177,9 @@ function MainNavbar() {
                 <a
                     href="#calculator"
                     onClick={handleCalculatorClick}
-                    className={`xl:text-[16px] text-[14px] font-bold ${location.pathname === item.path ? 'text-yellow-500' : 'text-black'
-                        } hover:text-[#df950d] transition-all`}
+                    className={`xl:text-[16px] text-[14px] font-bold ${
+                        location.pathname === item.path ? 'text-yellow-500' : 'text-black'
+                    } hover:text-[#df950d] transition-all`}
                 >
                     {item.pagename}
                 </a>
@@ -188,8 +190,9 @@ function MainNavbar() {
         return (
             <Link
                 to={item.subItems ? '#' : item.path}
-                className={`xl:text-[16px] text-[14px] font-bold ${location.pathname === item.path ? 'text-yellow-500' : 'text-black'
-                    } hover:text-[#df950d] transition-all`}
+                className={`xl:text-[16px] text-[14px] font-bold ${
+                    location.pathname === item.path ? 'text-yellow-500' : 'text-black'
+                } hover:text-[#df950d] transition-all`}
             >
                 {item.pagename}
             </Link>
@@ -210,11 +213,11 @@ function MainNavbar() {
                         <AiOutlineMenu size={25} className={`${isMenuOpen ? 'hidden' : 'block'}`} />
                     </div>
                     <div className='mt-1'>
-                        <img
-                            src={`/api/logo/download/${colorlogo.photo}`}
-                            alt={colorlogo.alt}
-                            title={colorlogo.imgTitle}
-                            className='w-[3.5cm] h-[1cm] object-contain'
+                        <img 
+                            src={`/api/logo/download/${colorlogo.photo}`} 
+                            alt={colorlogo.alt} 
+                            title={colorlogo.imgTitle} 
+                            className='w-[3.5cm] h-[1cm] object-contain' 
                         />
                     </div>
 
@@ -227,11 +230,11 @@ function MainNavbar() {
                                 }}
                             ></div>
                             <div className='flex ml-5 justify-between p-4 z-10'>
-                                <img
-                                    src={`/api/logo/download/${whitelogo.photo}`}
-                                    alt={whitelogo.alt}
-                                    title={whitelogo.imgTitle}
-                                    className='w-[6cm] h-[3cm] object-contain'
+                                <img 
+                                    src={`/api/logo/download/${whitelogo.photo}`} 
+                                    alt={whitelogo.alt} 
+                                    title={whitelogo.imgTitle} 
+                                    className='w-[6cm] h-[3cm] object-contain' 
                                 />
                                 <IoClose size={32} style={{ color: 'black' }} onClick={toggleMenu} />
                             </div>
@@ -258,19 +261,12 @@ function MainNavbar() {
                                     </li>
                                 ))}
                                 <li className='flex flex-col items-center justify-center  w-full p-2'>
-                                <button
-                                    className="w-full px-8 text-white py-2 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
-                                    onClick={() => {
-                                        const newWindow = window.open();
-                                        if (newWindow) {
-                                            newWindow.document.write(`
-        <iframe src="/catalogue.pdf" width="100%" height="100%" style="border: none;"></iframe>
-      `);
-                                        }
-                                    }}
-                                >
-                                    View Catalogue
-                                </button>
+                                    <button
+                                        className="w-1/2 px-8 text-white py-2 mt-5 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+                                        onClick={handleCatalogueClick}
+                                    >
+                                        Catalogue
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -310,22 +306,14 @@ function MainNavbar() {
                             <div className='-mt-8 py-3 text-center'>
                                 <button
                                     className="w-full px-8 text-white py-2 bg-[#fab700] font-semibold rounded-full hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
-                                    onClick={() => {
-                                        const newWindow = window.open();
-                                        if (newWindow) {
-                                            newWindow.document.write(`
-        <iframe src="/catalogue.pdf" width="100%" height="100%" style="border: none;"></iframe>
-      `);
-                                        }
-                                    }}
+                                    onClick={() => window.open('/catalogue.pdf', '_blank')}
                                 >
-                                    View Catalogue
+                                    Catalogue
                                 </button>
-
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <Outlet />
             <Footer />
