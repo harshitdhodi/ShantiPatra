@@ -107,6 +107,8 @@ import OuterDiameter from './ClientComponents/calculator/OuterDiameter';
 import ProductMainPage from './ClientComponents/pages/ProductMainPage';
 import PrivacyPolicy from './ClientComponents/privacypolicy/PrivacyPolicy';
 import TermsAndConditions from './ClientComponents/privacypolicy/TermsAndConditions';
+import PdfViewerPage from './ClientComponents/PdfViewer';
+import PdfViewer from './ClientComponents/PdfViewer';
 
 function App() {
   return (
@@ -148,6 +150,7 @@ function AppContent() {
           <>
             <Route path="/" element={<Navbar />} >
               <Route index element={<Home />} />
+              <Route path="/catalogue.pdf" element={<PdfViewer />} />
               {/* <Route path="/" element={<Home />} /> */}
               <Route path="/blogs" element={<Blogs />} />
               {/* <Route path="/blog/:slugs" element={<BlogDetail />} /> */}

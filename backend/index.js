@@ -54,7 +54,7 @@ const strengthPoint = require("./routes/strengthPoints")
 const catalog = require("./routes/catalog")
 const allSlugs = require("./routes/AllSlugs")
 const pdfRoute = require("./routes/pdf")
-const { PDFDocument } = require('pdf-lib');
+
 app.use(express.json());
 
 app.use(cookieParser());
@@ -126,43 +126,21 @@ app.use("/api/catalog", catalog)
 
 // Add static file serving for PDFs 
 // app.use('/pdf', express.static(path.join(__dirname, 'uploads')));
-// Path to the PDF file (assuming it's stored locally)
-const pdfPath = path.join(__dirname, 'uploads', 'catalogue.pdf');
 
-// Middleware to disable caching and enforce revalidation
-app.use((req, res, next) => {
-    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    res.set('Pragma', 'no-cache');
-    res.set('Expires', '0');
-    next();
-});
 // Keep the general static file serving
 app.use(express.static(path.join(__dirname, 'dist')));
  
 // Add this route before the catch-all route
-
 app.get('/catalogue.pdf', (req, res) => {
-    // Check if the file exists
-    if (!fs.existsSync(pdfPath)) {
-        return res.status(404).send('PDF file not found');
+    const catalogPath = path.join(__dirname, 'uploads', 'catalogue.pdf');
+    
+    if (fs.existsSync(catalogPath)) {
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename=catalogue.pdf');
+        res.sendFile(catalogPath);
+    } else {
+        res.status(404).send('Catalog PDF not found. Please contact administrator.');
     }
-
-    // Set headers to force inline viewing
-    res.set({
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': 'inline; filename="catalogue.pdf"',
-        'Accept-Ranges': 'none', // Discourage range requests that might trigger downloads
-        'X-Content-Type-Options': 'nosniff' // Prevent MIME-type sniffing
-    });
-
-    // Stream the PDF file
-    const fileStream = fs.createReadStream(pdfPath);
-    fileStream.pipe(res);
-
-    // Handle streaming errors
-    fileStream.on('error', (err) => {
-        res.status(500).send('Error streaming the PDF');
-    });
 });
 
 // Keep the catch-all route last 

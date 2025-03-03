@@ -1,17 +1,20 @@
-// filepath: /d:/Shantipatra/GIT/frontend/src/ClientComponents/PdfViewer.jsx
-import React from 'react';
-import { Worker, Viewer } from '@react-pdf-viewer/core';
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import React from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
-const PdfViewer = ({ fileUrl }) => {
-    return (
-        <div style={{ height: '750px' }}>
-            <Worker workerUrl={`https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js`}>
-                <Viewer fileUrl={fileUrl} />
-            </Worker>
-        </div>
-    );
+// Specify the worker file
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+const ViewCatalogue = () => {
+  const fileUrl = '/catalogue.pdf'; // Update this path to your actual PDF file URL
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Document file={fileUrl} onLoadError={(error) => console.error('PDF loading error:', error)}>
+        <Page pageNumber={1} />
+      </Document>
+    </div>
+  );
 };
 
-export default PdfViewer;
+export default ViewCatalogue;

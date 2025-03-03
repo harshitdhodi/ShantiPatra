@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SplashScreen from './Splashscreen';
 import Homecarousel from '../Homecarousel';
 import WhyChoosePaper from '../WhyChoosePaper';
@@ -15,7 +16,6 @@ import ProductSlider from '../ProductSlider';
 import ProductHome from '../ProductHome';
 import CalculatorPage from '../calculator/CalculatorePage';
 
-
 function Home() {
   const [isSplashVisible, setIsSplashVisible] = useState(true);
 
@@ -24,8 +24,8 @@ function Home() {
   };
 
   return (
-    <div  className="relative w-full bg-gray-50">
-     <div 
+    <div className="relative w-full bg-gray-50">
+      <div 
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50m-40 0a40,40 0 1,0 80,0a40,40 0 1,0 -80,0' fill='none' stroke='%23333' stroke-width='1'/%3E%3C/svg%3E")`,
@@ -37,9 +37,7 @@ function Home() {
         isVisible={isSplashVisible}
       />
 
-
       <div>
-      
         <Homecarousel />
         <AboutUs />
         <ProductHome />
@@ -54,10 +52,13 @@ function Home() {
         <LatestBlogs />
        
         <div id="calculator">
-        <CalculatorPage />
+          <CalculatorPage />
         </div>
         <OurClients />
         {/* <Brands/> */}
+        <Link to="/pdf-viewer">
+          <button>View PDF</button>
+        </Link>
       </div>
     </div>
   );
