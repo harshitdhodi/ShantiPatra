@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import "../quill.css";
-import img from "../images/shantipatra.jpg";
 
 function AboutUs() {
     const [pageContent, setPageContent] = useState({
@@ -88,8 +87,9 @@ function AboutUs() {
                                     <div className="w-full lg:w-1/2 xl:w-full md:ml-9 lg:-mb-2  xl:mb-10 xl:ml-12  relative">
                                         <div className="absolute top-[-20px] left-[-20px] w-[80%] lg:w-[100%] h-[80%] bg-[#fab700] z-0"></div>
                                         <img
-                                            src={img}
-                                            alt="About Us"
+                                            src={`/api/image/download/${pageContent.photo}`}
+                                            alt={pageContent.alt}
+                                            title={pageContent.imgTitle}
                                             className="w-full h-auto lg:h-[30vh] xl:h-[55vh] object-fill  xl:w-[70wh] relative z-10 shadow-lg  shadow-black"
                                         />
                                         <div className="absolute bottom-[-20px] right-[-20px] w-[60%] h-[60%] bg-[#384b98] z-0"></div>
@@ -100,8 +100,9 @@ function AboutUs() {
                                     <div className="w-full lg:w-1/2  xl:w-full lg:-mb-2  xl:mb-10 xl:ml-12  relative">
                                         <div className="absolute top-[-20px] left-[-20px] w-[80%] lg:w-[100%] h-[80%] bg-[#fab700] z-0"></div>
                                         <img
-                                            src={img}
-                                            alt="About Us"
+                                            src={`/api/image/download/${pageContent.photo}`}
+                                            alt={pageContent.alt}
+                                            title={pageContent.imgTitle}
                                             className="w-full h-auto lg:h-[30vh] xl:h-[55vh] object-fill  xl:w-[70wh] relative z-10 shadow-lg  shadow-black"
                                         />
                                         <div className="absolute bottom-[-20px] right-[-20px] w-[60%] h-[60%] bg-[#384b98] z-0"></div>

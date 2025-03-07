@@ -57,7 +57,7 @@ function Home() {
         <OurClients />
         {/* <Brands/> */}
         <Link to="/pdf-viewer">
-          <button>View PDF</button>
+   
         </Link>
       </div>
     </div>

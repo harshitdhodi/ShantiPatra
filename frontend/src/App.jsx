@@ -147,7 +147,6 @@ function AppContent() {
 )}
 
       </div>
-      
       <Routes>
       <Route path="/catalogue.pdf" element={<ScrollablePdfViewer />} />   
         {!isLoggedIn ? (
